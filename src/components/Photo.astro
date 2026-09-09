@@ -1,0 +1,40 @@
+---
+import type { Tint } from '../data/content';
+
+/**
+ * Placeholder de foto hachurado. Quando as fotos reais chegarem, troque o
+ * conteúdo por <img>/<Image> mantendo o mesmo wrapper — o aspect-ratio ou a
+ * altura fixa já evitam layout shift.
+ */
+interface Props {
+  alt: string;
+  tint: Tint;
+  /** Legenda em mono no canto inferior, como no protótipo. */
+  caption?: string;
+  class?: string;
+}
+
+const { alt, tint, caption, class: className = '' } = Astro.props;
+
+const tintClass: Record<Tint, string> = {
+  'tint-yellow': 'bg-tint-yellow',
+  'tint-sand': 'bg-tint-sand',
+  'tint-coral': 'bg-tint-coral',
+  'tint-blue': 'bg-tint-blue',
+  'tint-green': 'bg-tint-green',
+};
+---
+
+<div
+  role="img"
+  aria-label={alt}
+  class:list={['hatched flex items-end p-2', tintClass[tint], className]}
+>
+  {
+    caption && (
+      <span class="font-mono text-[9px] font-medium tracking-[0.04em] uppercase opacity-60">
+        {caption}
+      </span>
+    )
+  }
+</div>

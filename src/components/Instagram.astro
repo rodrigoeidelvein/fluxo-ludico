@@ -1,0 +1,29 @@
+---
+import Photo from './Photo.astro';
+import { instagramPosts } from '../data/content';
+import { instagramUrl } from '../lib/site';
+---
+
+<section class="px-[18px] pb-[26px]">
+  <div class="mb-[10px] flex items-baseline justify-between">
+    <h2 class="font-display text-[18px] tracking-[-0.02em]">@fluxoludico</h2>
+    <a
+      href={instagramUrl}
+      target="_blank"
+      rel="noopener"
+      class="font-mono text-[11px] font-medium text-accent uppercase">Seguir</a
+    >
+  </div>
+
+  <ul class="grid grid-cols-3 gap-[5px]">
+    {
+      instagramPosts.map((post) => (
+        <li>
+          <a href={instagramUrl} target="_blank" rel="noopener">
+            <Photo alt={post.alt} tint={post.tint} class="aspect-square rounded-control" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

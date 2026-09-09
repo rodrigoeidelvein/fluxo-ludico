@@ -1,0 +1,63 @@
+---
+import Photo from './Photo.astro';
+import { gallery } from '../data/content';
+---
+
+<dialog
+  data-lightbox
+  class="m-auto w-[min(560px,100vw)] max-w-none bg-transparent p-[18px] backdrop:bg-ink/90"
+  aria-label="Galeria de fotos"
+>
+  <div class="flex items-center justify-between text-paper">
+    <p class="font-mono text-[11px] font-medium tracking-[0.06em] uppercase">
+      <span data-lightbox-index>1</span> / {gallery.length}
+    </p>
+    <button
+      type="button"
+      data-lightbox-close
+      class="min-h-[44px] cursor-pointer px-2 font-mono text-[11px] font-medium tracking-[0.06em] uppercase"
+      >fechar ✕</button
+    >
+  </div>
+
+  <div class="mt-2" data-lightbox-stage>
+    {
+      gallery.map((photo, i) => (
+        <Photo
+          alt={photo.alt}
+          tint={photo.tint}
+          class:list={['aspect-[4/3] rounded-media', i === 0 ? '' : 'hidden']}
+        />
+      ))
+    }
+  </div>
+
+  <p
+    data-lightbox-caption
+    class="mt-2 font-mono text-[11px]/[1.5] text-paper/70"
+    aria-live="polite"
+  />
+
+  <div class="mt-3 flex gap-2">
+    <button
+      type="button"
+      data-lightbox-prev
+      class="min-h-[44px] flex-1 cursor-pointer rounded-control border-[1.5px] border-paper/40 font-mono text-[11px] font-medium tracking-[0.06em] text-paper uppercase"
+      >← anterior</button
+    >
+    <button
+      type="button"
+      data-lightbox-next
+      class="min-h-[44px] flex-1 cursor-pointer rounded-control border-[1.5px] border-paper/40 font-mono text-[11px] font-medium tracking-[0.06em] text-paper uppercase"
+      >próxima →</button
+    >
+  </div>
+</dialog>
+
+<script>
+  import { setupLightbox } from '../lib/lightbox';
+  import { trackWhatsAppClicks } from '../lib/analytics';
+
+  setupLightbox();
+  trackWhatsAppClicks();
+</script>

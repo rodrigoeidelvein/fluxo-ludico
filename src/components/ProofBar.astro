@@ -1,0 +1,16 @@
+---
+import { proofPoints } from '../data/content';
+---
+
+<div
+  class="flex gap-[18px] overflow-hidden bg-ink px-4 py-[11px] font-mono text-[11px] font-medium tracking-[0.06em] whitespace-nowrap text-paper uppercase"
+>
+  {
+    proofPoints.map((point, i) => (
+      <>
+        {i > 0 && <span aria-hidden="true">★</span>}
+        <span>{point}</span>
+      </>
+    ))
+  }
+</div>

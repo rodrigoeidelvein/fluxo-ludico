@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import { seo, instagramUrl } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = seo.title, description = seo.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Fluxo Lúdico',
+  description,
+  url: canonical.href,
+  areaServed: 'Porto Alegre e região metropolitana, RS',
+  sameAs: [instagramUrl],
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <meta name="theme-color" content="#16130f" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+  </head>
+
+  <body>
+    <!-- Coluna única de 560px, mobile-first. Desktop apenas centraliza (não há
+         design de desktop ainda — ver handoff, seção Responsivo). -->
+    <div id="top" class="mx-auto min-h-screen max-w-[560px] bg-paper text-ink">
+      <slot />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+---
+import { serviceChips } from '../data/content';
+import { formEndpoint, whatsappLink, ctaHref } from '../lib/site';
+
+const fields = [
+  { name: 'nome', label: 'Nome', type: 'text', autocomplete: 'name', inputmode: 'text' },
+  { name: 'whatsapp', label: 'WhatsApp', type: 'tel', autocomplete: 'tel', inputmode: 'tel' },
+  { name: 'dataBairro', label: 'Data e bairro', type: 'text', autocomplete: 'off', inputmode: 'text' },
+] as const;
+
+const inputClass =
+  'w-full min-h-[44px] rounded-control border-[1.5px] border-ink bg-paper p-[14px] text-[14px] font-medium text-ink outline-none placeholder:text-ink/60 aria-[invalid=true]:border-accent';
+---
+
+<section id="orcamento" class="bg-yellow px-[18px] py-[28px]">
+  <h2 class="font-display text-h2 tracking-[-0.03em] uppercase">Pede o<br />orçamento</h2>
+
+  <form
+    class="mt-[18px] flex flex-col gap-[9px]"
+    novalidate
+    data-quote-form
+    data-endpoint={formEndpoint}
+    data-whatsapp-base={whatsappLink('')}
+  >
+    {
+      fields.map((field) => (
+        <div>
+          <label class="sr-only" for={`campo-${field.name}`}>
+            {field.label}
+          </label>
+          <input
+            id={`campo-${field.name}`}
+            name={field.name}
+            type={field.type}
+            inputmode={field.inputmode}
+            autocomplete={field.autocomplete}
+            placeholder={field.label}
+            aria-describedby={`erro-${field.name}`}
+            class={inputClass}
+          />
+          <p
+            id={`erro-${field.name}`}
+            data-error-for={field.name}
+            class="mt-[5px] font-mono text-[11px] text-accent empty:hidden"
+            aria-live="polite"
+          />
+        </div>
+      ))
+    }
+
+    <fieldset class="my-1 border-0 p-0">
+      <legend class="sr-only">Serviços de interesse</legend>
+      <div class="flex flex-wrap gap-[7px]">
+        {
+          serviceChips.map((chip) => (
+            <label class="cursor-pointer">
+              <input
+                type="checkbox"
+                name="servicos"
+                value={chip}
+                checked={chip === serviceChips[0]}
+                class="peer sr-only"
+              />
+              <span class="block rounded-full border-[1.5px] border-ink px-[13px] py-[9px] font-mono text-[11px] font-medium uppercase transition-colors duration-150 ease-out peer-checked:bg-ink peer-checked:text-paper peer-focus-visible:outline peer-focus-visible:outline-[3px] peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent">
+                {chip}
+              </span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <button
+      type="submit"
+      data-submit
+      class="min-h-[44px] cursor-pointer rounded-control bg-ink p-4 text-[16px] font-semibold text-paper transition-colors duration-150 ease-out hover:bg-black disabled:cursor-default disabled:opacity-60"
+    >
+      Enviar
+    </button>
+
+    <p
+      data-form-error
+      class="font-mono text-[11px]/[1.5] text-accent empty:hidden"
+      aria-live="polite"
+    />
+  </form>
+
+  <div data-quote-success hidden class="mt-[18px]">
+    <p class="text-lead font-semibold">Recebemos! Respondemos hoje pelo WhatsApp.</p>
+    <a
+      href={ctaHref}
+      target="_blank"
+      rel="noopener"
+      class="mt-3 inline-block text-[12px] font-medium underline underline-offset-[3px] transition-colors duration-150 ease-out hover:text-accent"
+      >prefere adiantar? chamar no WhatsApp →</a
+    >
+  </div>
+</section>
+
+<script>
+  import { setupQuoteForm } from '../lib/quote-form';
+
+  document
+    .querySelectorAll<HTMLFormElement>('[data-quote-form]')
+    .forEach((form) => setupQuoteForm(form));
+</script>

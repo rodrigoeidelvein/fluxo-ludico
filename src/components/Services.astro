@@ -1,0 +1,41 @@
+---
+import { services } from '../data/content';
+---
+
+<section id="servicos" class="px-[18px] pt-[26px] pb-[6px]">
+  <h2 class="eyebrow mb-[14px] text-accent">01 — Serviços</h2>
+
+  <div class="flex flex-col gap-[10px]">
+    <article
+      class="relative overflow-hidden rounded-card bg-coral p-5 text-paper transition-transform duration-150 ease-out hover:-translate-y-0.5"
+    >
+      <div
+        class="absolute -top-6 -right-6 size-24 rounded-full bg-paper/16"
+        aria-hidden="true"
+      >
+      </div>
+      <h3 class="font-display text-poster tracking-[-0.03em] uppercase">Recreação</h3>
+      <p class="mt-[9px] max-w-[30ch] text-[13px]/[1.45] font-medium">
+        2 a 4 recreadores, brincadeiras separadas por idade, do começo ao fim da festa.
+      </p>
+    </article>
+
+    <div class="grid grid-cols-2 gap-[10px]">
+      {
+        services.map((service) => (
+          <article
+            class:list={[
+              'rounded-card p-4 transition-transform duration-150 ease-out hover:-translate-y-0.5',
+              service.className,
+            ]}
+          >
+            <h3 class="font-display text-[18px]/[1] tracking-[-0.02em] uppercase">
+              <Fragment set:html={service.title} />
+            </h3>
+            <p class="mt-2 text-[12px]/[1.4] font-medium">{service.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

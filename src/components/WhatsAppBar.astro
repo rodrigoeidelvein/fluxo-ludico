@@ -1,0 +1,15 @@
+---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { ctaHref } from '../lib/site';
+---
+
+<a
+  href={ctaHref}
+  target="_blank"
+  rel="noopener"
+  data-analytics="whatsapp-bar"
+  class="sticky bottom-0 z-20 flex min-h-[44px] items-center justify-center gap-[10px] bg-whatsapp px-[18px] py-[15px] text-[16px] font-semibold text-whatsapp-ink"
+>
+  <WhatsAppIcon class="size-[18px]" />
+  Falar agora no WhatsApp
+</a>
