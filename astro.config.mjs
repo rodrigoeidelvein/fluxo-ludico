@@ -4,8 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://rodrigoeidelvein.github.io',
-  base: '/fluxo-ludico',
+  site: 'https://fluxoludico.com',
   vite: {
     plugins: [tailwindcss()],
   },
