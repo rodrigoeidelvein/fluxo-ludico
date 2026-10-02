@@ -5,7 +5,7 @@ import WhatsAppIcon from './WhatsAppIcon.astro';
 import { ctaHref } from '../lib/site';
 ---
 
-<section class="bg-yellow px-[18px] pt-[28px]">
+<section class="bg-yellow px-[18px] pt-[28px] pb-[30px]">
   <h1 class="font-display text-h1 tracking-[-0.035em] uppercase">
     Festa de<br />criança<br />é trabalho<br />nosso.
   </h1>
@@ -26,11 +26,14 @@ import { ctaHref } from '../lib/site';
     Chamar no WhatsApp
   </a>
 
-  <Photo
-    src={equipePinturaBaloes}
-    alt="Equipe da Fluxo Lúdico sentada no tapete com a maleta de pintura facial e esculturas de balão"
-    tint="tint-yellow"
-    sizes="100vw"
-    class="mt-[22px] aspect-[3/2]"
-  />
+  <div class="relative mt-[26px]">
+    <div class="absolute inset-0 rotate-[2.5deg] rounded-card bg-coral" aria-hidden="true"></div>
+    <Photo
+      src={equipePinturaBaloes}
+      alt="Equipe da Fluxo Lúdico sentada no tapete com a maleta de pintura facial e esculturas de balão"
+      tint="tint-yellow"
+      sizes="100vw"
+      class="relative aspect-[3/2] -rotate-1 rounded-card"
+    />
+  </div>
 </section>
