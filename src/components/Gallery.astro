@@ -18,7 +18,8 @@ const [main, ...rest] = gallery;
       <Photo
         alt={main.alt}
         tint={main.tint}
-        caption="foto principal"
+        src={main.src}
+        sizes="(min-width: 560px) 360px, 66vw"
         class="h-[190px] rounded-media"
       />
     </button>
@@ -28,11 +29,17 @@ const [main, ...rest] = gallery;
         rest.slice(0, 2).map((photo, i) => (
           <button
             type="button"
-            class="flex flex-1"
+            class="flex min-h-0 flex-1"
             data-gallery-item={i + 1}
             aria-label={`Abrir foto: ${photo.alt}`}
           >
-            <Photo alt={photo.alt} tint={photo.tint} class="h-full w-full rounded-media" />
+            <Photo
+              alt={photo.alt}
+              tint={photo.tint}
+              src={photo.src}
+              sizes="(min-width: 560px) 180px, 33vw"
+              class="h-full w-full rounded-media"
+            />
           </button>
         ))
       }

@@ -23,7 +23,7 @@ export function setupLightbox(): void {
     index = (next + slides.length) % slides.length;
     slides.forEach((slide, i) => slide.classList.toggle('hidden', i !== index));
     indexLabel.textContent = String(index + 1);
-    caption.textContent = slides[index].getAttribute('aria-label') ?? '';
+    caption.textContent = slides[index].dataset.caption ?? '';
   }
 
   function open(at: number): void {

@@ -1,7 +1,15 @@
 /**
- * Conteúdo da home. Copy final conforme o handoff; mídias são placeholders até
- * a cliente enviar as fotos.
+ * Conteúdo da home. Copy final conforme o handoff. Galeria e Instagram usam as
+ * artes reais; hero e equipe seguem com placeholder até chegarem as fotos.
  */
+
+import type { ImageMetadata } from 'astro';
+import esculturasDeBalao from '../assets/photos/esculturas-de-balao.jpg';
+import oficinaEscolaColagem from '../assets/photos/oficina-escola-colagem.jpg';
+import oficinaMalabarismoEscolas from '../assets/photos/oficina-malabarismo-escolas.jpg';
+import pinturaBaloesFestas from '../assets/photos/pintura-baloes-festas.jpg';
+import pinturaFacialDesenhos from '../assets/photos/pintura-facial-desenhos.jpg';
+import vivenciasEducadoresMalabarismo from '../assets/photos/vivencias-educadores-malabarismo.jpg';
 
 export type Tint = 'tint-yellow' | 'tint-sand' | 'tint-coral' | 'tint-blue' | 'tint-green';
 
@@ -35,13 +43,22 @@ export const services = [
   },
 ];
 
-export const gallery: { alt: string; tint: Tint }[] = [
-  { alt: 'Crianças em roda durante uma brincadeira conduzida por um recreador', tint: 'tint-sand' },
-  { alt: 'Criança com pintura facial de borboleta', tint: 'tint-coral' },
-  { alt: 'Escultura de balão sendo entregue a uma criança', tint: 'tint-blue' },
-  { alt: 'Recreadora ensinando malabarismo a um grupo de crianças', tint: 'tint-green' },
-  { alt: 'Mesa de festa com crianças brincando ao fundo', tint: 'tint-yellow' },
-  { alt: 'Grupo de crianças posando com o time da Fluxo Lúdico', tint: 'tint-coral' },
+export const gallery: { alt: string; tint: Tint; src: ImageMetadata }[] = [
+  {
+    alt: 'Pinturas faciais da Fluxo Lúdico: unicórnios, Sonic, Pikachu, Stitch e desenhos nas mãos das crianças',
+    tint: 'tint-coral',
+    src: pinturaFacialDesenhos,
+  },
+  {
+    alt: 'Esculturas de balão: urso no coração, pinguim, dinossauro, cachorro e criança segurando uma espada de balão',
+    tint: 'tint-blue',
+    src: esculturasDeBalao,
+  },
+  {
+    alt: 'Oficina em escola: recreadores fazendo malabarismo com as crianças no pátio — movimento, aprendizado e diversão',
+    tint: 'tint-green',
+    src: oficinaEscolaColagem,
+  },
 ];
 
 /** PENDENTE: depoimentos com nome e foto reais. */
@@ -67,10 +84,22 @@ export const team: { name: string; role: string; tint: Tint }[] = [
   { name: 'Nome', role: 'Pintura facial', tint: 'tint-green' },
 ];
 
-export const instagramPosts: { alt: string; tint: Tint }[] = [
-  { alt: 'Post do Instagram: festa infantil com recreação', tint: 'tint-sand' },
-  { alt: 'Post do Instagram: pintura facial', tint: 'tint-coral' },
-  { alt: 'Post do Instagram: esculturas de balão', tint: 'tint-blue' },
+export const instagramPosts: { alt: string; tint: Tint; src: ImageMetadata }[] = [
+  {
+    alt: 'Post do Instagram: pintura facial e esculturas de balões para festas infantis',
+    tint: 'tint-coral',
+    src: pinturaBaloesFestas,
+  },
+  {
+    alt: 'Post do Instagram: oficina de malabarismo para escolas — brincar também é aprender',
+    tint: 'tint-green',
+    src: oficinaMalabarismoEscolas,
+  },
+  {
+    alt: 'Post do Instagram: vivências para educadores — o malabarismo como ferramenta pedagógica',
+    tint: 'tint-sand',
+    src: vivenciasEducadoresMalabarismo,
+  },
 ];
 
 export const serviceChips = ['Recreação', 'Pintura', 'Balões', 'Malabares'];

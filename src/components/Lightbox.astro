@@ -26,7 +26,10 @@ import { gallery } from '../data/content';
         <Photo
           alt={photo.alt}
           tint={photo.tint}
-          class:list={['aspect-[4/3] rounded-media', i === 0 ? '' : 'hidden']}
+          src={photo.src}
+          fit="contain"
+          sizes="(min-width: 560px) 524px, 100vw"
+          class:list={['aspect-[4/5] max-h-[70dvh] w-full', i === 0 ? '' : 'hidden']}
         />
       ))
     }

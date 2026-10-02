@@ -20,7 +20,13 @@ import { instagramUrl } from '../lib/site';
       instagramPosts.map((post) => (
         <li>
           <a href={instagramUrl} target="_blank" rel="noopener">
-            <Photo alt={post.alt} tint={post.tint} class="aspect-square rounded-control" />
+            <Photo
+              alt={post.alt}
+              tint={post.tint}
+              src={post.src}
+              sizes="(min-width: 560px) 180px, 33vw"
+              class="aspect-[4/5] rounded-control"
+            />
           </a>
         </li>
       ))
