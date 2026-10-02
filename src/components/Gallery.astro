@@ -1,49 +1,30 @@
 ---
 import Photo from './Photo.astro';
 import { gallery } from '../data/content';
-
-const [main, ...rest] = gallery;
 ---
 
 <section id="galeria" class="page-x pt-[26px] pb-[6px] lg:pt-20">
   <h2 class="eyebrow mb-[14px] text-accent lg:mb-6">02 — Galeria</h2>
 
-  <div class="grid grid-cols-[2fr_1fr] gap-[7px] lg:gap-4" data-gallery>
-    <button
-      type="button"
-      class="contents"
-      data-gallery-item="0"
-      aria-label={`Abrir foto: ${main.alt}`}
-    >
-      <Photo
-        alt={main.alt}
-        tint={main.tint}
-        src={main.src}
-        sizes="(min-width: 1200px) 750px, 66vw"
-        class="h-[190px] rounded-media md:h-[340px] lg:h-[480px]"
-      />
-    </button>
-
-    <div class="flex flex-col gap-[7px] lg:gap-4">
-      {
-        rest.slice(0, 2).map((photo, i) => (
-          <button
-            type="button"
-            class="flex min-h-0 flex-1"
-            data-gallery-item={i + 1}
-            aria-label={`Abrir foto: ${photo.alt}`}
-          >
-            <Photo
-              alt={photo.alt}
-              tint={photo.tint}
-              src={photo.src}
-              sizes="(min-width: 1200px) 375px, 33vw"
-              class="h-full w-full rounded-media"
-            />
-          </button>
-        ))
-      }
-    </div>
+  <div class="grid grid-cols-3 gap-[7px] lg:gap-4" data-gallery>
+    {
+      gallery.map((photo, i) => (
+        <button
+          type="button"
+          class="block cursor-pointer"
+          data-gallery-item={i}
+          aria-label={`Abrir foto: ${photo.alt}`}
+        >
+          <Photo
+            alt={photo.alt}
+            tint={photo.tint}
+            src={photo.src}
+            sizes="(min-width: 1200px) 375px, 33vw"
+            class="aspect-[4/5] w-full rounded-media"
+          />
+        </button>
+      ))
+    }
   </div>
 
   <button
