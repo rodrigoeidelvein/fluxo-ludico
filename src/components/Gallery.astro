@@ -5,10 +5,10 @@ import { gallery } from '../data/content';
 const [main, ...rest] = gallery;
 ---
 
-<section id="galeria" class="px-[18px] pt-[26px] pb-[6px]">
-  <h2 class="eyebrow mb-[14px] text-accent">02 — Galeria</h2>
+<section id="galeria" class="page-x pt-[26px] pb-[6px] lg:pt-20">
+  <h2 class="eyebrow mb-[14px] text-accent lg:mb-6">02 — Galeria</h2>
 
-  <div class="grid grid-cols-[2fr_1fr] gap-[7px]" data-gallery>
+  <div class="grid grid-cols-[2fr_1fr] gap-[7px] lg:gap-4" data-gallery>
     <button
       type="button"
       class="contents"
@@ -19,12 +19,12 @@ const [main, ...rest] = gallery;
         alt={main.alt}
         tint={main.tint}
         src={main.src}
-        sizes="(min-width: 560px) 360px, 66vw"
-        class="h-[190px] rounded-media"
+        sizes="(min-width: 1200px) 750px, 66vw"
+        class="h-[190px] rounded-media md:h-[340px] lg:h-[480px]"
       />
     </button>
 
-    <div class="flex flex-col gap-[7px]">
+    <div class="flex flex-col gap-[7px] lg:gap-4">
       {
         rest.slice(0, 2).map((photo, i) => (
           <button
@@ -37,7 +37,7 @@ const [main, ...rest] = gallery;
               alt={photo.alt}
               tint={photo.tint}
               src={photo.src}
-              sizes="(min-width: 560px) 180px, 33vw"
+              sizes="(min-width: 1200px) 375px, 33vw"
               class="h-full w-full rounded-media"
             />
           </button>
@@ -49,7 +49,7 @@ const [main, ...rest] = gallery;
   <button
     type="button"
     data-gallery-item="0"
-    class="mt-3 inline-block text-[12px] font-medium underline underline-offset-[3px] transition-colors duration-150 ease-out hover:text-accent"
+    class="mt-3 inline-block cursor-pointer text-[12px] lg:mt-4 lg:text-[14px] font-medium underline underline-offset-[3px] transition-colors duration-150 ease-out hover:text-accent"
   >
     ver todas as fotos →
   </button>

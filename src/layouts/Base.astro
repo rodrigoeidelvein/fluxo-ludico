@@ -42,9 +42,9 @@ const jsonLd = {
   </head>
 
   <body>
-    <!-- Coluna única de 560px, mobile-first. Desktop apenas centraliza (não há
-         design de desktop ainda — ver handoff, seção Responsivo). -->
-    <div id="top" class="mx-auto min-h-screen max-w-[560px] bg-paper text-ink">
+    <!-- Mobile-first em coluna única; a partir de lg (1024px) as seções abrem
+         em grade dentro do container .page-x. -->
+    <div id="top" class="min-h-screen bg-paper text-ink">
       <slot />
     </div>
   </body>

@@ -66,8 +66,7 @@
 
   body {
     margin: 0;
-    /* Fundo fora da coluna de 560px. */
-    background: var(--color-ink);
+    background: var(--color-paper);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
@@ -94,6 +93,18 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+}
+
+/* Container de página: coluna de 18px de respiro no mobile, centralizada e
+   limitada a 1200px no desktop. O fundo da seção continua de ponta a ponta. */
+@utility page-x {
+  margin-inline: auto;
+  max-width: 1200px;
+  padding-inline: 18px;
+
+  @media (width >= 64rem) {
+    padding-inline: 40px;
   }
 }
 

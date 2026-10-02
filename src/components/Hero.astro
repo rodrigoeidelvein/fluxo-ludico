@@ -5,35 +5,43 @@ import WhatsAppIcon from './WhatsAppIcon.astro';
 import { ctaHref } from '../lib/site';
 ---
 
-<section class="bg-yellow px-[18px] pt-[28px] pb-[30px]">
-  <h1 class="font-display text-h1 tracking-[-0.035em] uppercase">
-    Festa de<br />criança<br />é trabalho<br />nosso.
-  </h1>
-
-  <p class="mt-4 max-w-[34ch] text-lead font-medium">
-    Recreadores, pintura facial, esculturas de balão e workshop de malabarismo. Você cuida dos
-    convidados, a gente cuida das crianças.
-  </p>
-
-  <a
-    href={ctaHref}
-    target="_blank"
-    rel="noopener"
-    data-analytics="whatsapp-hero"
-    class="mt-5 flex min-h-[44px] items-center justify-center gap-[10px] rounded-control bg-ink px-[18px] py-4 text-[16px] font-semibold text-paper transition-colors duration-150 ease-out hover:bg-black"
+<section class="bg-yellow">
+  <div
+    class="page-x pt-[28px] pb-[30px] lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16 lg:py-20"
   >
-    <WhatsAppIcon class="size-[18px] text-whatsapp" />
-    Chamar no WhatsApp
-  </a>
+    <div>
+      <h1
+        class="font-display text-h1 tracking-[-0.035em] uppercase lg:text-[clamp(60px,5.4vw,78px)]"
+      >
+        Festa de<br />criança<br />é trabalho<br />nosso.
+      </h1>
 
-  <div class="relative mt-[26px]">
-    <div class="absolute inset-0 rotate-[2.5deg] rounded-card bg-coral" aria-hidden="true"></div>
-    <Photo
-      src={equipePinturaBaloes}
-      alt="Equipe da Fluxo Lúdico sentada no tapete com a maleta de pintura facial e esculturas de balão"
-      tint="tint-yellow"
-      sizes="100vw"
-      class="relative aspect-[3/2] -rotate-1 rounded-card"
-    />
+      <p class="mt-4 max-w-[34ch] text-lead font-medium lg:mt-6 lg:text-[19px]">
+        Recreadores, pintura facial, esculturas de balão e workshop de malabarismo. Você cuida dos
+        convidados, a gente cuida das crianças.
+      </p>
+
+      <a
+        href={ctaHref}
+        target="_blank"
+        rel="noopener"
+        data-analytics="whatsapp-hero"
+        class="mt-5 flex min-h-[44px] items-center justify-center gap-[10px] rounded-control bg-ink px-[18px] py-4 text-[16px] font-semibold text-paper transition-colors duration-150 ease-out hover:bg-black lg:mt-8 lg:inline-flex lg:px-7"
+      >
+        <WhatsAppIcon class="size-[18px] text-whatsapp" />
+        Chamar no WhatsApp
+      </a>
+    </div>
+
+    <div class="relative mt-[26px] lg:mt-0">
+      <div class="absolute inset-0 rotate-[2.5deg] rounded-card bg-coral" aria-hidden="true"></div>
+      <Photo
+        src={equipePinturaBaloes}
+        alt="Equipe da Fluxo Lúdico sentada no tapete com a maleta de pintura facial e esculturas de balão"
+        tint="tint-yellow"
+        sizes="(min-width: 1024px) 540px, 100vw"
+        class="relative aspect-[3/2] -rotate-1 rounded-card"
+      />
+    </div>
   </div>
 </section>

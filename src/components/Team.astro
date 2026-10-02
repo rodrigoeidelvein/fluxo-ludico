@@ -3,10 +3,10 @@ import Photo from './Photo.astro';
 import { team } from '../data/content';
 ---
 
-<section class="px-[18px] py-[26px]">
-  <h2 class="eyebrow mb-[14px] text-accent">04 — A equipe</h2>
+<section class="py-[26px] lg:py-20">
+  <h2 class="eyebrow mb-[14px] text-accent lg:mb-6">04 — A equipe</h2>
 
-  <ul class="grid grid-cols-2 gap-2">
+  <ul class="grid grid-cols-2 gap-2 lg:gap-4">
     {
       team.map((member) => (
         <li>
@@ -14,11 +14,11 @@ import { team } from '../data/content';
             alt={`${member.name}, ${member.role} da Fluxo Lúdico`}
             tint={member.tint}
             src={member.src}
-            sizes="50vw"
+            sizes="(min-width: 1024px) 270px, 50vw"
             class="aspect-[4/5] rounded-media"
           />
-          <p class="mt-2 text-[12.5px] font-semibold">{member.name}</p>
-          <p class="text-[11px] text-muted-on-light">{member.role}</p>
+          <p class="mt-2 text-[12.5px] font-semibold lg:mt-3 lg:text-[15px]">{member.name}</p>
+          <p class="text-[11px] text-muted-on-light lg:text-[13px]">{member.role}</p>
         </li>
       ))
     }

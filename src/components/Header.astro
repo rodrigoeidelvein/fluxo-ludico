@@ -1,9 +1,27 @@
 ---
+const nav = [
+  { href: '#servicos', label: 'Serviços' },
+  { href: '#galeria', label: 'Galeria' },
+  { href: '#orcamento', label: 'Orçamento' },
+];
 ---
 
-<header
-  class="sticky top-0 z-20 flex items-center justify-between bg-ink px-4 py-3 text-paper"
->
-  <a href="#top" class="font-display text-[15px] tracking-[-0.02em]">FLUXO LÚDICO</a>
-  <p class="font-mono text-[10px] font-medium tracking-[0.08em]">POA · RS</p>
+<header class="sticky top-0 z-20 bg-ink text-paper">
+  <div class="page-x flex items-center justify-between py-3 lg:py-4">
+    <a href="#top" class="font-display text-[15px] tracking-[-0.02em] lg:text-[18px]">FLUXO LÚDICO</a>
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Seções">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="font-mono text-[11px] font-medium tracking-[0.08em] uppercase transition-colors duration-150 ease-out hover:text-yellow"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <span class="font-mono text-[11px] font-medium tracking-[0.08em] text-paper/60">POA · RS</span>
+    </nav>
+    <p class="font-mono text-[10px] font-medium tracking-[0.08em] md:hidden">POA · RS</p>
+  </div>
 </header>

@@ -2,25 +2,27 @@
 import { testimonials } from '../data/content';
 ---
 
-<section class="mt-6 bg-ink px-[18px] py-[28px] text-paper">
-  <h2 class="eyebrow mb-4 text-yellow">03 — Relatos</h2>
+<section class="mt-6 bg-ink text-paper lg:mt-20">
+  <div class="page-x py-[28px] lg:py-20">
+    <h2 class="eyebrow mb-4 text-yellow lg:mb-6">03 — Relatos</h2>
 
-  <div class="flex flex-col gap-[10px]">
-    {
-      testimonials.map((item) => (
-        <blockquote class="rounded-card bg-surface-dark p-[18px]">
-          <p class="text-[14px]/[1.5] font-medium">&ldquo;{item.quote}&rdquo;</p>
-          <footer class="mt-[13px] flex items-center gap-[9px]">
-            <span
-              class:list={['block size-7 rounded-full', item.avatarClass]}
-              aria-hidden="true"
-            />
-            <span class="font-mono text-[11px] font-medium text-muted-on-dark uppercase">
-              {item.author}
-            </span>
-          </footer>
-        </blockquote>
-      ))
-    }
+    <div class="flex flex-col gap-[10px] lg:grid lg:grid-cols-2 lg:gap-4">
+      {
+        testimonials.map((item) => (
+          <blockquote class="flex flex-col justify-between rounded-card bg-surface-dark p-[18px] lg:p-8">
+            <p class="text-[14px]/[1.5] font-medium lg:text-[20px]/[1.45]">&ldquo;{item.quote}&rdquo;</p>
+            <footer class="mt-[13px] flex items-center gap-[9px]">
+              <span
+                class:list={['block size-7 rounded-full', item.avatarClass]}
+                aria-hidden="true"
+              />
+              <span class="font-mono text-[11px] font-medium text-muted-on-dark uppercase">
+                {item.author}
+              </span>
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
   </div>
 </section>

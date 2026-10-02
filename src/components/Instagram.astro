@@ -4,8 +4,8 @@ import { instagramPosts } from '../data/content';
 import { instagramUrl } from '../lib/site';
 ---
 
-<section class="px-[18px] pb-[26px]">
-  <div class="mb-[10px] flex items-baseline justify-between">
+<section class="pb-[26px] lg:py-20">
+  <div class="mb-[10px] flex items-baseline justify-between lg:mb-6">
     <h2 class="font-display text-[18px] tracking-[-0.02em]">@fluxoludico</h2>
     <a
       href={instagramUrl}
@@ -15,7 +15,7 @@ import { instagramUrl } from '../lib/site';
     >
   </div>
 
-  <ul class="grid grid-cols-3 gap-[5px]">
+  <ul class="grid grid-cols-3 gap-[5px] lg:gap-3">
     {
       instagramPosts.map((post) => (
         <li>
@@ -24,7 +24,7 @@ import { instagramUrl } from '../lib/site';
               alt={post.alt}
               tint={post.tint}
               src={post.src}
-              sizes="(min-width: 560px) 180px, 33vw"
+              sizes="(min-width: 1024px) 180px, 33vw"
               class="aspect-[4/5] rounded-control"
             />
           </a>

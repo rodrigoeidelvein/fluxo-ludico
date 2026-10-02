@@ -5,7 +5,7 @@ import { gallery } from '../data/content';
 
 <dialog
   data-lightbox
-  class="m-auto w-[min(560px,100vw)] max-w-none bg-transparent p-[18px] backdrop:bg-ink/90"
+  class="m-auto w-[min(560px,100vw)] lg:w-[min(960px,100vw)] max-w-none bg-transparent p-[18px] backdrop:bg-ink/90"
   aria-label="Galeria de fotos"
 >
   <div class="flex items-center justify-between text-paper">
@@ -28,8 +28,8 @@ import { gallery } from '../data/content';
           tint={photo.tint}
           src={photo.src}
           fit="contain"
-          sizes="(min-width: 560px) 524px, 100vw"
-          class:list={['aspect-[4/5] max-h-[70dvh] w-full', i === 0 ? '' : 'hidden']}
+          sizes="(min-width: 1024px) 924px, (min-width: 560px) 524px, 100vw"
+          class:list={['aspect-[4/5] max-h-[70dvh] w-full lg:aspect-[3/2] lg:max-h-[78dvh]', i === 0 ? '' : 'hidden']}
         />
       ))
     }

@@ -22,8 +22,11 @@ import Lightbox from '../components/Lightbox.astro';
   <Services />
   <Gallery />
   <Testimonials />
-  <Team />
-  <Instagram />
+  <!-- No desktop, equipe e Instagram dividem a linha (a ordem continua a mesma). -->
+  <div class="page-x lg:grid lg:grid-cols-2 lg:gap-16">
+    <Team />
+    <Instagram />
+  </div>
   <QuoteForm />
   <Footer />
   <WhatsAppBar />
