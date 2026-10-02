@@ -6,14 +6,16 @@ import { team } from '../data/content';
 <section class="px-[18px] py-[26px]">
   <h2 class="eyebrow mb-[14px] text-accent">04 — A equipe</h2>
 
-  <ul class="grid grid-cols-3 gap-2">
+  <ul class="grid grid-cols-2 gap-2">
     {
       team.map((member) => (
         <li>
           <Photo
             alt={`${member.name}, ${member.role} da Fluxo Lúdico`}
             tint={member.tint}
-            class="h-[120px] rounded-media"
+            src={member.src}
+            sizes="50vw"
+            class="aspect-[4/5] rounded-media"
           />
           <p class="mt-2 text-[12.5px] font-semibold">{member.name}</p>
           <p class="text-[11px] text-muted-on-light">{member.role}</p>

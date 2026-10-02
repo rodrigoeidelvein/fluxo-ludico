@@ -1,9 +1,11 @@
 /**
  * Conteúdo da home. Copy final conforme o handoff. Galeria e Instagram usam as
- * artes reais; hero e equipe seguem com placeholder até chegarem as fotos.
+ * artes reais; hero e equipe usam fotos da equipe.
  */
 
 import type { ImageMetadata } from 'astro';
+import equipeLubaPinturaFacial from '../assets/photos/equipe-luba-pintura-facial.jpg';
+import equipeRodrigoBaloes from '../assets/photos/equipe-rodrigo-baloes.jpg';
 import esculturasDeBalao from '../assets/photos/esculturas-de-balao.jpg';
 import oficinaEscolaColagem from '../assets/photos/oficina-escola-colagem.jpg';
 import oficinaMalabarismoEscolas from '../assets/photos/oficina-malabarismo-escolas.jpg';
@@ -77,11 +79,9 @@ export const testimonials = [
   },
 ];
 
-/** PENDENTE: nomes e fotos da equipe. */
-export const team: { name: string; role: string; tint: Tint }[] = [
-  { name: 'Nome', role: 'Arte-educador', tint: 'tint-coral' },
-  { name: 'Nome', role: 'Malabarista', tint: 'tint-blue' },
-  { name: 'Nome', role: 'Pintura facial', tint: 'tint-green' },
+export const team: { name: string; role: string; tint: Tint; src: ImageMetadata }[] = [
+  { name: 'Luba', role: 'Pintura facial', tint: 'tint-blue', src: equipeLubaPinturaFacial },
+  { name: 'Rodrigo', role: 'Balões', tint: 'tint-green', src: equipeRodrigoBaloes },
 ];
 
 export const instagramPosts: { alt: string; tint: Tint; src: ImageMetadata }[] = [
