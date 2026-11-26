@@ -28,6 +28,7 @@ src/
   styles/global.css     design tokens do handoff como @theme do Tailwind
   components/           uma seção por componente
   pages/index.astro     a ordem das seções é o funil — não alterar
+  pages/orcamento-enviado.astro  confirmação do orçamento (URL de conversão do Google Ads)
 ```
 
 Os tokens do handoff viram utilitários do Tailwind: `bg-ink`, `text-paper`, `bg-yellow`, `bg-coral`,
@@ -50,8 +51,12 @@ O handoff pede um endpoint serverless, que ainda não existe. Por isso o formul�
 - **`PUBLIC_FORM_ENDPOINT` vazio (padrão hoje):** modo *handoff*. O formulário valida os campos e abre
   o WhatsApp com o pedido já escrito. O site pode ir ao ar sem backend e sem perder lead.
 - **`PUBLIC_FORM_ENDPOINT` preenchido:** `POST` de `{ nome, whatsapp, dataBairro, servicos[] }` em JSON.
-  Resposta 2xx troca o formulário pela confirmação ("Recebemos! Respondemos hoje pelo WhatsApp.");
-  qualquer erro mostra o fallback com link direto do WhatsApp.
+  Resposta 2xx redireciona para `/orcamento-enviado/` ("Recebemos teu pedido!"); qualquer erro mostra
+  o fallback com link direto do WhatsApp.
+
+A página `/orcamento-enviado/` é a **conversão do Google Ads** (URL de "pedido de orçamento concluído").
+Tem `noindex` para não aparecer na busca orgânica. Se mudar o caminho, atualize `quoteSuccessPath` em
+`src/lib/site.ts` **e** a ação de conversão no Google Ads.
 
 Como o site é estático, o endpoint é externo (Vercel/Netlify Function, Formspree e afins). Se preferir
 manter tudo no mesmo deploy, é só adicionar o adapter da plataforma e criar a rota em `src/pages/api/`.

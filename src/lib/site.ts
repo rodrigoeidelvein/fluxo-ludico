@@ -12,6 +12,12 @@ export const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP || '5551000000000'
  */
 export const formEndpoint: string = import.meta.env.PUBLIC_FORM_ENDPOINT || '';
 
+/**
+ * Página de confirmação para onde o formulário redireciona após o envio.
+ * É a URL de conversão do Google Ads — não mudar sem atualizar a campanha.
+ */
+export const quoteSuccessPath = '/orcamento-enviado/';
+
 /** Link wa.me com mensagem pré-preenchida. */
 export function whatsappLink(message: string): string {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;

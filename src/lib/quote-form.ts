@@ -1,6 +1,7 @@
 /**
  * Formulário de orçamento: máscara, validação e máquina de estados
- * 'idle' | 'invalid' | 'sending' | 'sent' | 'error'.
+ * 'idle' | 'invalid' | 'sending' | 'sent' | 'error'. 'sent' redireciona para a
+ * página de confirmação (`data-success-url`).
  *
  * Sem `data-endpoint` configurado o formulário opera em modo *handoff*: o
  * pedido validado vira uma mensagem pronta no WhatsApp. É o comportamento de
@@ -52,8 +53,8 @@ export function setupQuoteForm(form: HTMLFormElement): void {
   const endpoint = form.dataset.endpoint ?? '';
   const whatsappBase = form.dataset.whatsappBase ?? '';
   const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+  const successUrl = form.dataset.successUrl ?? '';
   const formError = form.querySelector<HTMLElement>('[data-form-error]')!;
-  const success = form.parentElement!.querySelector<HTMLElement>('[data-quote-success]')!;
 
   const inputs = (['nome', 'whatsapp', 'dataBairro'] as FieldName[]).map(
     (name) => form.elements.namedItem(name) as HTMLInputElement,
@@ -101,6 +102,14 @@ export function setupQuoteForm(form: HTMLFormElement): void {
     formError.append(link);
   }
 
+  // Voltar da página de confirmação restaura a página do bfcache com o botão
+  // ainda em "Enviando…".
+  window.addEventListener('pageshow', (event) => {
+    if (!event.persisted) return;
+    submit.disabled = false;
+    submit.textContent = 'Enviar';
+  });
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     formError.textContent = '';
@@ -139,13 +148,11 @@ export function setupQuoteForm(form: HTMLFormElement): void {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       track('orcamento_enviado', { servicos: servicos.join(',') });
-      form.hidden = true;
-      success.hidden = false;
-      success.querySelector('p')?.setAttribute('tabindex', '-1');
-      success.querySelector<HTMLElement>('p')?.focus();
+      // A página de confirmação é a conversão do Google Ads. O botão fica em
+      // "Enviando…" até a navegação para não convidar a um segundo envio.
+      window.location.assign(successUrl);
     } catch {
       showSendError('Não conseguimos enviar agora.');
-    } finally {
       submit.disabled = false;
       submit.textContent = 'Enviar';
     }

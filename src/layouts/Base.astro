@@ -5,9 +5,11 @@ import { seo, instagramUrl } from '../lib/site';
 interface Props {
   title?: string;
   description?: string;
+  /** Páginas de sistema (ex.: confirmação do orçamento) ficam fora do Google. */
+  noindex?: boolean;
 }
 
-const { title = seo.title, description = seo.description } = Astro.props;
+const { title = seo.title, description = seo.description, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 
 const jsonLd = {
@@ -29,6 +31,7 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#16130f" />
 
     <meta property="og:type" content="website" />

@@ -1,0 +1,101 @@
+---
+/**
+ * Confirmação do orçamento. O formulário redireciona para cá após o envio, e
+ * esta URL é a conversão do Google Ads (ver `quoteSuccessPath` em lib/site.ts).
+ * Fica fora do índice do Google para não receber visitas orgânicas.
+ */
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Photo from '../components/Photo.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import equipeRodrigoBaloes from '../assets/photos/equipe-rodrigo-baloes.jpg';
+import { ctaHref } from '../lib/site';
+
+const steps = [
+  { n: '01', text: 'A gente confere a agenda para a data e o bairro da festa.' },
+  { n: '02', text: 'Te mandamos o orçamento no WhatsApp ainda hoje.' },
+  { n: '03', text: 'Tirou as dúvidas e fechou? A data fica reservada.' },
+];
+---
+
+<Base
+  title="Orçamento enviado — Fluxo Lúdico"
+  description="Recebemos teu pedido de orçamento. Respondemos hoje pelo WhatsApp."
+  noindex
+>
+  <!-- Coluna flex para o rodapé ficar no fim da tela quando o conteúdo é curto. -->
+  <div class="flex min-h-screen flex-col">
+    <Header />
+
+    <main class="flex-1 bg-yellow">
+      <div
+        class="page-x pt-[28px] pb-[34px] lg:grid lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16 lg:py-20"
+      >
+        <div>
+          <p class="eyebrow">Orçamento · Pedido enviado</p>
+
+          <h1
+            class="mt-3 font-display text-h1 tracking-[-0.035em] uppercase lg:text-[clamp(60px,5.4vw,78px)]"
+          >
+            Recebemos<br />teu pedido!
+          </h1>
+
+          <p class="mt-4 max-w-[34ch] text-lead font-medium lg:mt-6 lg:text-[19px]">
+            Respondemos hoje pelo WhatsApp com valores e disponibilidade para a data da festa.
+          </p>
+
+          <ol class="mt-6 flex flex-col gap-[10px] lg:mt-8">
+            {
+              steps.map((step) => (
+                <li class="flex items-start gap-3 rounded-control border-[1.5px] border-ink bg-paper p-[14px]">
+                  <span class="font-mono text-[11px] font-medium leading-[20px] tracking-[0.08em]">
+                    {step.n}
+                  </span>
+                  <span class="text-[14px] font-medium leading-[20px]">{step.text}</span>
+                </li>
+              ))
+            }
+          </ol>
+
+          <div class="mt-6 flex flex-col gap-3 lg:mt-8 lg:flex-row lg:items-center lg:gap-6">
+            <a
+              href={ctaHref}
+              target="_blank"
+              rel="noopener"
+              data-analytics="whatsapp-confirmacao"
+              class="flex min-h-[44px] items-center justify-center gap-[10px] rounded-control bg-ink px-[18px] py-4 text-[16px] font-semibold text-paper transition-colors duration-150 ease-out hover:bg-black lg:inline-flex lg:px-7"
+            >
+              <WhatsAppIcon class="size-[18px] text-whatsapp" />
+              Prefere adiantar? Chamar agora
+            </a>
+            <a
+              href="/"
+              class="text-center text-[13px] font-medium underline underline-offset-[3px] transition-colors duration-150 ease-out hover:text-accent"
+              >Voltar para o site</a
+            >
+          </div>
+        </div>
+
+        <div class="relative mt-[30px] lg:mt-0">
+          <div class="absolute inset-0 -rotate-[2.5deg] rounded-card bg-blue" aria-hidden="true"></div>
+          <Photo
+            src={equipeRodrigoBaloes}
+            alt="Rodrigo, da equipe da Fluxo Lúdico, sentado no tapete com esculturas de balão"
+            tint="tint-yellow"
+            sizes="(min-width: 1024px) 540px, 100vw"
+            class="relative aspect-[4/5] rotate-1 rounded-card"
+          />
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</Base>
+
+<script>
+  import { trackWhatsAppClicks } from '../lib/analytics';
+
+  trackWhatsAppClicks();
+</script>
